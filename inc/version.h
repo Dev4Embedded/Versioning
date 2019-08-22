@@ -1,6 +1,21 @@
 #ifndef INC_VERSION_H_
 #define INC_VERSION_H_
 
+#define VERSION_MAJOR 0
+#define VERSION_MINOR 0
+
+#define VERSION_DATE_YEAR
+#define VERSION_DATE_MONTH
+#define VERSION_DATE_DAY
+
+#define VERSION_TIME_HOUR
+#define VERSION_TIME_MINUTE
+#define VERSION_TIME_SECOND
+
+#define VERSION_COMP_NUMBER 0
+
+
+
 
 
 #endif /* INC_VERSION_H_ */
