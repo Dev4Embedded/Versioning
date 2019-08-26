@@ -14,8 +14,12 @@ DATE="$DAYS.$MONTHS.$YEARS"
 HOURS=$(date +"%H")
 MINUTES=$(date +"%M")
 SECONDS=$(date +"%S")
-TIME="$HOURS:$MINUTES:$SECONDS"
 
+if [[ $SECONDS -lt 10 ]]; then
+	TIME=$"$HOURS:$MINUTES:0$SECONDS"
+else
+	TIME=$"$HOURS:$MINUTES:$SECONDS"
+fi
 while read -r line
 do
 	if [[ $line  == *"#define VERSION_MAJOR"* ]]; then
@@ -43,8 +47,14 @@ sed -i "s/#define VERSION_COMP_NUMBER $PREV_NO_COMP/#define VERSION_COMP_NUMBER 
 sed -i "s/#define VERSION_DATE_YEAR ..../#define VERSION_DATE_YEAR $YEARS/g" "$input"
 sed -i "s/#define VERSION_DATE_MONTH ../#define VERSION_DATE_MONTH $MONTHS/g" "$input"
 sed -i "s/#define VERSION_DATE_DAY ../#define VERSION_DATE_DAY $DAYS/g" "$input"
+sed -i "s/#define VERSION_FULL_DATE ........../#define VERSION_FULL_DATE $DATE/g" "$input"
+
 sed -i "s/#define VERSION_TIME_HOUR ../#define VERSION_TIME_HOUR $HOURS/g" "$input"
 sed -i "s/#define VERSION_TIME_MINUTE ../#define VERSION_TIME_MINUTE $MINUTES/g" "$input"
-sed -i "s/#define VERSION_TIME_SECOND ../#define VERSION_TIME_SECOND $SECONDS/g" "$input"
-
+if [[ $SECONDS -lt 10 ]]; then
+	sed -i "s/#define VERSION_TIME_SECOND ../#define VERSION_TIME_SECOND 0$SECONDS/g" "$input"
+else
+	sed -i "s/#define VERSION_TIME_SECOND ../#define VERSION_TIME_SECOND $SECONDS/g" "$input"
+fi
+sed -i "s/#define VERSION_FULL_TIME ......../#define VERSION_FULL_TIME $TIME/g" "$input"
 
