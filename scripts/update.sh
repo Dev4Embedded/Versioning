@@ -1,4 +1,4 @@
-input="../inc/version.h"
+input="inc/version.h"
 
 MAJOR=0
 MINOR=0
@@ -26,11 +26,11 @@ do
 		MAJOR=${line##*VERSION_MAJOR }
 	fi
 	if [[ $line  == *"#define VERSION_MINOR"* ]]; then
-        MINOR=${line##*VERSION_MINOR }
-    fi
-    if [[ $line == *"#define VERSION_COMP_NUMBER"* ]]; then
-    	PREV_NO_COMP=${line##*VERSION_COMP_NUMBER }
-    fi
+		MINOR=${line##*VERSION_MINOR }
+	fi
+	if [[ $line == *"#define VERSION_COMP_NUMBER"* ]]; then
+		PREV_NO_COMP=${line##*VERSION_COMP_NUMBER }
+	fi
 done < "$input"
 
 echo "Major version: $MAJOR"
