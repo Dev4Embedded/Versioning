@@ -16,4 +16,22 @@
 
 #define VERSION_COMP_NUMBER 0
 
+#define VERSION_STR_EXPAND(str) #str
+#define VERSION_STR(str) VERSION_STR_EXPAND(str)
+
+#pragma pack(1)
+#pragma pack(push)
+typedef struct
+
+{
+	uint8_t hour[2];
+	uint8_t minute[2];
+	uint8_t second[2];
+	uint8_t day[2];
+	uint8_t month[2];
+	uint8_t year[4];
+
+}VERSION;
+#pragma pack(pop)
+
 #endif /* INC_VERSION_H_ */
