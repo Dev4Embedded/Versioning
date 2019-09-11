@@ -1,6 +1,8 @@
 #ifndef INC_VERSION_H_
 #define INC_VERSION_H_
 
+#include "inttypes.h"
+
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 0
 

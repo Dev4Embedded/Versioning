@@ -39,7 +39,10 @@ echo "Time: $TIME"
 echo "Date: $DATE"
 #echo "Previous number of compilation: $PREV_NO_COMP"
 
-CURR_NO_COMP=$((PREV_NO_COMP+1))
+#Remove carriage return character on the last:
+CURR_NO_COMP="${PREV_NO_COMP/$'\r'/}"
+#Compilation number incremenet: 
+CURR_NO_COMP=$((CURR_NO_COMP+1))
 
 echo "Current number of compilation: $CURR_NO_COMP"
 
