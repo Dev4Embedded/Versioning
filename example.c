@@ -3,8 +3,6 @@
 
 int main()
 {
-	printf("Hello World!\n");
-	printf("Current compilation number: %i \n", VERSION_COMP_NUMBER);
 
 	printf("Current compilation number: %i \n", VERSION_COMP_NUMBER);
 
@@ -17,4 +15,11 @@ int main()
 		.month =    VERSION_STR(VERSION_DATE_MONTH),
 		.year  =    VERSION_STR(VERSION_DATE_YEAR),
 	};
+	printf("VERSION struct in memory: ");
+	uint8_t* array = (uint8_t*)&ver;
+	for(int i=0; i<sizeof(ver); i++){
+		printf("%c",*array);
+		array++;
+	}
+
 };
