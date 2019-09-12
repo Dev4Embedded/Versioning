@@ -16,10 +16,10 @@ RM := rm -rf
 
 all: cleanup update target
 cleanup:
-	$(SCRIPTS_DIR)/cleanup.sh $(SCRIPTS_DIR)
+	@$(SCRIPTS_DIR)/cleanup.sh $(SCRIPTS_DIR)
 update:
 	@echo 'Update firmware version'
-	$(SCRIPTS_DIR)/update.sh
+	@$(SCRIPTS_DIR)/update.sh
 target: 
 	@echo 'Building target...';
 	gcc -I"$(INC_DIR)" $(TARGET_NAME) -o $(OUTPUT_PATH)$(OUTPUT_NAME)
