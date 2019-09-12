@@ -14,8 +14,9 @@ TARGET_NAME = example.c
 OBJECTIVES = 
 RM := rm -rf
 
-all: update target
-	 
+all: cleanup update target
+cleanup:
+	$(SCRIPTS_DIR)/cleanup.sh $(SCRIPTS_DIR)
 update:
 	@echo 'Update firmware version'
 	$(SCRIPTS_DIR)/update.sh
