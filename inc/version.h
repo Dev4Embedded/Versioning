@@ -17,6 +17,7 @@
 #define VERSION_FULL_TIME 00:00:00
 
 #define VERSION_COMP_NUMBER 0
+#define VERSION_COMMIT_ID 0
 
 #define VERSION_STR_EXPAND(str) #str
 #define VERSION_STR(str) VERSION_STR_EXPAND(str)

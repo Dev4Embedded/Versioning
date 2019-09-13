@@ -3,6 +3,8 @@ input="inc/version.h"
 MAJOR=0
 MINOR=0
 PREV_NO_COMP=0
+PRV_COMMIT_ID=0
+ID_LENGTH=6
 
 #Get current date:
 YEARS=$(date +"%Y")
@@ -14,6 +16,10 @@ DATE="$DAYS.$MONTHS.$YEARS"
 HOURS=$(date +"%H")
 MINUTES=$(date +"%M")
 SECONDS=$(date +"%S")
+
+#Get commit ID:
+COMMIT_ID=$(git rev-parse HEAD)
+COMMIT_ID_SHORT=${COMMIT_ID::$ID_LENGTH}
 
 if [[ $SECONDS -lt 10 ]]; then
 	TIME=$"$HOURS:$MINUTES:0$SECONDS"
@@ -31,6 +37,9 @@ do
 	if [[ $line == *"#define VERSION_COMP_NUMBER"* ]]; then
 		PREV_NO_COMP=${line##*VERSION_COMP_NUMBER }
 	fi
+	if [[ $line == *"#define VERSION_COMMIT_ID"* ]]; then
+		PREV_COMMIT_ID=${line##*VERSION_COMMIT_ID }
+	fi
 done < "$input"
 
 echo "Major version: $MAJOR"
@@ -45,6 +54,7 @@ CURR_NO_COMP="${PREV_NO_COMP/$'\r'/}"
 CURR_NO_COMP=$((CURR_NO_COMP+1))
 
 echo "Current number of compilation: $CURR_NO_COMP"
+echo "Commit ID: $COMMIT_ID_SHORT"
 
 sed -i "s/#define VERSION_COMP_NUMBER $PREV_NO_COMP/#define VERSION_COMP_NUMBER $CURR_NO_COMP/g" "$input"
 sed -i "s/#define VERSION_DATE_YEAR ..../#define VERSION_DATE_YEAR $YEARS/g" "$input"
@@ -60,4 +70,5 @@ else
 	sed -i "s/#define VERSION_TIME_SECOND ../#define VERSION_TIME_SECOND $SECONDS/g" "$input"
 fi
 sed -i "s/#define VERSION_FULL_TIME ......../#define VERSION_FULL_TIME $TIME/g" "$input"
+sed -i "s/#define VERSION_COMMIT_ID $PREV_COMMIT_ID/#define VERSION_COMMIT_ID $COMMIT_ID_SHORT/g" "$input"
 
