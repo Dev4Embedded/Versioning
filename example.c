@@ -8,14 +8,15 @@ int main()
 
 	const VERSION ver=
 	{
-		.major =    VERSION_STR(VERSION_MAJOR),
-		.minor =    VERSION_STR(VERSION_MINOR),
-		.hour  =    VERSION_STR(VERSION_TIME_HOUR),
-		.minute=    VERSION_STR(VERSION_TIME_MINUTE),
-		.second=    VERSION_STR(VERSION_TIME_SECOND),
-		.day   =    VERSION_STR(VERSION_DATE_DAY),
-		.month =    VERSION_STR(VERSION_DATE_MONTH),
-		.year  =    VERSION_STR(VERSION_DATE_YEAR),
+		.major    =    VERSION_STR(VERSION_MAJOR),
+		.minor    =    VERSION_STR(VERSION_MINOR),
+		.hour     =    VERSION_STR(VERSION_TIME_HOUR),
+		.minute   =    VERSION_STR(VERSION_TIME_MINUTE),
+		.second   =    VERSION_STR(VERSION_TIME_SECOND),
+		.day      =    VERSION_STR(VERSION_DATE_DAY),
+		.month    =    VERSION_STR(VERSION_DATE_MONTH),
+		.year     =    VERSION_STR(VERSION_DATE_YEAR),
+		.commitID =    VERSION_STR(VERSION_COMMIT_ID),
 	};
 	printf("VERSION struct in memory: ");
 	uint8_t* array = (uint8_t*)&ver;

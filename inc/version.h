@@ -25,7 +25,6 @@
 #pragma pack(1)
 #pragma pack(push)
 typedef struct
-
 {
 	uint8_t major[0];
 	uint8_t minor[0];
@@ -35,7 +34,7 @@ typedef struct
 	uint8_t day[2];
 	uint8_t month[2];
 	uint8_t year[4];
-
+	uint8_t commitID[0];
 }VERSION;
 #pragma pack(pop)
 

@@ -76,6 +76,7 @@ else
 fi
 sed -i "s/#define VERSION_FULL_TIME ......../#define VERSION_FULL_TIME $TIME/g" "$input"
 sed -i "s/#define VERSION_COMMIT_ID $PREV_COMMIT_ID/#define VERSION_COMMIT_ID $COMMIT_ID_SHORT/g" "$input"
+
 sed -i "s/	uint8_t major.../	uint8_t major[$MAJOR_LEN]/g" "$input"
 sed -i "s/	uint8_t minor.../	uint8_t minor[$MINOR_LEN]/g" "$input"
-
+sed -i "s/	uint8_t commitID.../	uint8_t commitID[$ID_LENGTH]/g" "$input"
