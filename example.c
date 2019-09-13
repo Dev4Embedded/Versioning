@@ -8,6 +8,8 @@ int main()
 
 	const VERSION ver=
 	{
+		.major =    VERSION_STR(VERSION_MAJOR),
+		.minor =    VERSION_STR(VERSION_MINOR),
 		.hour  =    VERSION_STR(VERSION_TIME_HOUR),
 		.minute=    VERSION_STR(VERSION_TIME_MINUTE),
 		.second=    VERSION_STR(VERSION_TIME_SECOND),

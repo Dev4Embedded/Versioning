@@ -50,11 +50,16 @@ echo "Date: $DATE"
 
 #Remove carriage return character on the last:
 CURR_NO_COMP="${PREV_NO_COMP/$'\r'/}"
+MAJOR="${MAJOR/$'\r'/}"
+MINOR="${MINOR/$'\r'/}"
 #Compilation number incremenet: 
 CURR_NO_COMP=$((CURR_NO_COMP+1))
 
 echo "Current number of compilation: $CURR_NO_COMP"
 echo "Commit ID: $COMMIT_ID_SHORT"
+
+MAJOR_LEN=${#MAJOR}
+MINOR_LEN=${#MINOR}
 
 sed -i "s/#define VERSION_COMP_NUMBER $PREV_NO_COMP/#define VERSION_COMP_NUMBER $CURR_NO_COMP/g" "$input"
 sed -i "s/#define VERSION_DATE_YEAR ..../#define VERSION_DATE_YEAR $YEARS/g" "$input"
@@ -71,4 +76,6 @@ else
 fi
 sed -i "s/#define VERSION_FULL_TIME ......../#define VERSION_FULL_TIME $TIME/g" "$input"
 sed -i "s/#define VERSION_COMMIT_ID $PREV_COMMIT_ID/#define VERSION_COMMIT_ID $COMMIT_ID_SHORT/g" "$input"
+sed -i "s/	uint8_t major.../	uint8_t major[$MAJOR_LEN]/g" "$input"
+sed -i "s/	uint8_t minor.../	uint8_t minor[$MINOR_LEN]/g" "$input"
 
