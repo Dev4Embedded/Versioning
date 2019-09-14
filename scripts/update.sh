@@ -61,7 +61,7 @@ echo "Commit ID: $COMMIT_ID_SHORT"
 MAJOR_LEN=${#MAJOR}
 MINOR_LEN=${#MINOR}
 
-sed -i "s/#define VERSION_COMP_NUMBER $PREV_NO_COMP/#define VERSION_COMP_NUMBER $CURR_NO_COMP/g" "$input"
+sed -i "s/#define VERSION_COMP_NUMBER $PREV_NO_COMP/#define VERSION_COMP_NUMBER $CURR_NO_COMP\r/g" "$input"
 sed -i "s/#define VERSION_DATE_YEAR ..../#define VERSION_DATE_YEAR $YEARS/g" "$input"
 sed -i "s/#define VERSION_DATE_MONTH ../#define VERSION_DATE_MONTH $MONTHS/g" "$input"
 sed -i "s/#define VERSION_DATE_DAY ../#define VERSION_DATE_DAY $DAYS/g" "$input"
@@ -75,7 +75,7 @@ else
 	sed -i "s/#define VERSION_TIME_SECOND ../#define VERSION_TIME_SECOND $SECONDS/g" "$input"
 fi
 sed -i "s/#define VERSION_FULL_TIME ......../#define VERSION_FULL_TIME $TIME/g" "$input"
-sed -i "s/#define VERSION_COMMIT_ID $PREV_COMMIT_ID/#define VERSION_COMMIT_ID $COMMIT_ID_SHORT/g" "$input"
+sed -i "s/#define VERSION_COMMIT_ID $PREV_COMMIT_ID/#define VERSION_COMMIT_ID $COMMIT_ID_SHORT\r/g" "$input"
 
 sed -i "s/	uint8_t major.../	uint8_t major[$MAJOR_LEN]/g" "$input"
 sed -i "s/	uint8_t minor.../	uint8_t minor[$MINOR_LEN]/g" "$input"
