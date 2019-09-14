@@ -28,6 +28,7 @@ typedef struct
 {
 	uint8_t major[0];
 	uint8_t minor[0];
+	uint8_t comp[0];
 	uint8_t hour[2];
 	uint8_t minute[2];
 	uint8_t second[2];

@@ -60,6 +60,7 @@ echo "Commit ID: $COMMIT_ID_SHORT"
 
 MAJOR_LEN=${#MAJOR}
 MINOR_LEN=${#MINOR}
+COMP_LEN=${#CURR_NO_COMP}
 
 sed -i "s/#define VERSION_COMP_NUMBER $PREV_NO_COMP/#define VERSION_COMP_NUMBER $CURR_NO_COMP\r/g" "$input"
 sed -i "s/#define VERSION_DATE_YEAR ..../#define VERSION_DATE_YEAR $YEARS/g" "$input"
@@ -80,3 +81,4 @@ sed -i "s/#define VERSION_COMMIT_ID $PREV_COMMIT_ID/#define VERSION_COMMIT_ID $C
 sed -i "s/	uint8_t major.../	uint8_t major[$MAJOR_LEN]/g" "$input"
 sed -i "s/	uint8_t minor.../	uint8_t minor[$MINOR_LEN]/g" "$input"
 sed -i "s/	uint8_t commitID.../	uint8_t commitID[$ID_LENGTH]/g" "$input"
+sed -i "s/	uint8_t comp.../	uint8_t comp[$COMP_LEN]/g" "$input"

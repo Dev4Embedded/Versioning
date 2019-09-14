@@ -10,6 +10,7 @@ int main()
 	{
 		.major    =    VERSION_STR(VERSION_MAJOR),
 		.minor    =    VERSION_STR(VERSION_MINOR),
+		.comp     =    VERSION_STR(VERSION_COMP_NUMBER),
 		.hour     =    VERSION_STR(VERSION_TIME_HOUR),
 		.minute   =    VERSION_STR(VERSION_TIME_MINUTE),
 		.second   =    VERSION_STR(VERSION_TIME_SECOND),
